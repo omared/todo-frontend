@@ -1,11 +1,10 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
+import { TaskListComponent } from './components/task-list/task-list';
 
 @Component({
   selector: 'app-root',
-  imports: [],
-  templateUrl: './app.html',
-  styleUrl: './app.scss'
+  standalone: true,
+  imports: [TaskListComponent],
+  templateUrl: './app.html'
 })
-export class App {
-  protected readonly title = signal('todo-frontend');
-}
+export class App {}

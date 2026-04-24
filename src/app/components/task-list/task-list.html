@@ -1,0 +1,60 @@
+<div class="app-wrapper">
+  <div class="container">
+    <header class="header">
+      <div class="header-top">
+        <span class="tag">MongoDB Atlas</span>
+        <span class="tag">Angular 19</span>
+      </div>
+      <h1 class="title">My Tasks</h1>
+      <div class="stats">
+        <div class="stat">
+          <span class="stat-number">{{ pendingCount }}</span>
+          <span class="stat-label">Pending</span>
+        </div>
+        <div class="divider"></div>
+        <div class="stat">
+          <span class="stat-number">{{ completedCount }}</span>
+          <span class="stat-label">Done</span>
+        </div>
+        <div class="divider"></div>
+        <div class="stat">
+          <span class="stat-number">{{ tasks.length }}</span>
+          <span class="stat-label">Total</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="input-row">
+      <input
+        class="task-input"
+        type="text"
+        placeholder="Add a new task..."
+        [(ngModel)]="newTaskTitle"
+        (keyup.enter)="addTask()"
+      />
+      <button class="btn-add" (click)="addTask()">
+        <span>+</span>
+      </button>
+    </div>
+
+    <div class="task-list" *ngIf="!isLoading; else loading">
+      <div *ngIf="tasks.length === 0" class="empty-state">
+        <p>No tasks yet. Add one above ↑</p>
+      </div>
+
+      <div class="task-item" *ngFor="let task of tasks" [class.completed]="task.completed">
+        <button class="check-btn" (click)="toggleTask(task)">
+          <span class="check-icon">{{ task.completed ? '✓' : '' }}</span>
+        </button>
+        <span class="task-title">{{ task.title }}</span>
+        <button class="delete-btn" (click)="deleteTask(task._id!)">✕</button>
+      </div>
+    </div>
+
+    <ng-template #loading>
+      <div class="loading">
+        <div class="spinner"></div>
+      </div>
+    </ng-template>
+  </div>
+</div>
