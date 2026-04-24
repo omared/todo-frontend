@@ -6,7 +6,7 @@ import { User } from '../models/user';
 @Injectable({ providedIn: 'root' })
 export class UserService {
   //private apiUrl = 'https://TU-APP.onrender.com/api/users';
-   private apiUrl = 'https://todo-backend-uv6t.onrender.com/api/user';
+   private apiUrl = 'https://todo-backend-uv6t.onrender.com/api/users';
 
   constructor(private http: HttpClient) {}
 
