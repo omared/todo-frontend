@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { TaskListComponent } from './components/task-list/task-list';
+import { UserListComponent } from './components/user-list/user-list';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [TaskListComponent],
+  imports: [UserListComponent],
   templateUrl: './app.html'
 })
 export class App {}
